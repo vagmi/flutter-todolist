@@ -8,3 +8,9 @@ class Task {
     this.done = !this.done;
   }
 }
+
+class TodoList {
+  List<Task> tasks;
+  int get taskCount => tasks.length;
+  TodoList({this.tasks});
+}

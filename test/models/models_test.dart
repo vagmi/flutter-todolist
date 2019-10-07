@@ -19,4 +19,12 @@ void main() {
     task.toggle();
     expect(task.done, equals(false));
   });
+
+  test('It creates a list to store tasks', () {
+    var list = TodoList(
+      tasks: List<Task>.generate(10, (i) => Task(title: "Task $i")),
+    );
+    expect(list.taskCount, equals(10));
+    expect(list.tasks[5].title, equals("Task 5"));
+  });
 }
