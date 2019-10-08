@@ -4,13 +4,19 @@ import 'package:todolist/models/models.dart';
 void main() {
   test('It creates a task', () {
     var task = Task(title: "Learn Dart");
+
     expect(task.title, equals("Learn Dart"));
     expect(task.done, equals(false));
   });
   test('Toggle completes a task if unfinished', () {
     var task = Task(title: "Learn Dart");
+    var callbackCalled = false;
+    task.addListener(() {
+      callbackCalled = true;
+    });
     expect(task.done, equals(false));
     task.toggle();
+    expect(callbackCalled, equals(true));
     expect(task.done, equals(true));
   });
   test('Toggle uncompletes a task if finished', () {
